@@ -1,0 +1,24 @@
+import org.apache.spark.sql.SQLContext
+import org.apache.spark.{SparkConf, SparkContext}
+object ReadCSVFile {
+  System.setProperty("hadoop.home.dir", "C:\\xx\\yy\\zz\\Hadoop\\")
+  //give the path of hadoop directory
+  case class Month(January:String, February:String, March:String, April:String)
+  def main(args : Array[String]): Unit = {
+    var conf = new SparkConf().setAppName("Read CSV File").setMaster("local[*]")
+    val sc = new SparkContext(conf)
+    val sqlContext = new SQLContext(sc)
+    import sqlContext.implicits._
+    val textRDD = sc.textFile("C:\\ww\\yy\\zz\\abc.csv")
+    // you can create your own path
+    val empRdd = textRDD.map {
+      line =>
+        val col = line.split(",")
+        Month(col(0), col(1), col(2), col(3))
+    }
+    val empDF = empRdd.toDF()
+    empDF.show()
+
+
+  }
+}

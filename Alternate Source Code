@@ -10,6 +10,7 @@ object ReadCSVFile {
       .option("inferSchema", "true")
       .load("C:\\xx\\yy\\zz\\emp_data.csv")
     empDF.show()
+    // For elaborated version check Code 1.0 in this repository.
     empDF.createTempView("view")
     val query = sqlContext.sql("select empno, ename from view order by empno").show()
   }

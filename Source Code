@@ -2,7 +2,7 @@ import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkConf, SparkContext}
 object ReadCSVFile {
   System.setProperty("hadoop.home.dir", "C:\\xx\\yy\\zz\\Hadoop\\")
-  //give the path of hadoop directory
+  //give the path of hadoop directory. Make changes in Environment variables.
   case class Month(January:String, February:String, March:String, April:String)
   def main(args : Array[String]): Unit = {
     var conf = new SparkConf().setAppName("Read CSV File").setMaster("local[*]")

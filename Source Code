@@ -18,7 +18,7 @@ object ReadCSVFile {
     }
     val empDF = empRdd.toDF()
     empDF.show()
-// We have created the RDD and then converted it into Data frame.
+// We have created the RDD and then converted it into Data frame. It is not mandatory. You can check Version 2.0
 
   }
 }
